@@ -871,3 +871,5 @@ callbacks.Register( "Draw", FakelagSmartMode )
 
 -- Updater
 callbacks.Register( "Draw", Updater )
+
+-- By LukazEL
