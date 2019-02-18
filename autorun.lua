@@ -1,5 +1,5 @@
 local script_url = "https://raw.githubusercontent.com/LukazEL/Lua-Script/master/autorun.lua"
-local ver_url = "https://pastebin.com/raw/m1kWA8i8"  
+local ver_url = "https://pastebin.com/raw/4dnQHvKf"  
 local ver_cur = 1
 
 aimware_conf_error = 0
