@@ -1,4 +1,6 @@
---Lua pack by LukazEL
+-- Lua pack by LukazEL
+
+-- Lua UPDATE
 
 local script_url = "https://raw.githubusercontent.com/LukazEL/Lua-Script/master/autorun.lua"
 local ver_url = "https://pastebin.com/raw/v8YdZsen"  
