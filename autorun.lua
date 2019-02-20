@@ -1,3 +1,5 @@
+--Lua pack by LukazEL
+
 local script_url = "https://raw.githubusercontent.com/LukazEL/Lua-Script/master/autorun.lua"
 local ver_url = "https://pastebin.com/raw/v8YdZsen"  
 local ver_cur = 1.0
@@ -32,9 +34,6 @@ function main()
 end
 
 callbacks.Register( "Draw", main )
-
-
---Lua pack by LukazEL
 
 -- stuff
 local draw_Line, draw_TextShadow, draw_Color, draw_Text, g_tickinterval, string_format, http_Get, string_gsub, file_Open, math_exp, math_rad, math_max, math_abs, math_tan, math_sin, math_cos, math_fmod, draw_GetTextSize, draw_FilledRect, draw_RoundedRect, draw_RoundedRectFill, draw_CreateFont, draw_SetFont, client_WorldToScreen, draw_GetScreenSize, client_GetConVar, client_SetConVar, client_exec, PlayerNameByUserID, PlayerIndexByUserID, entities_GetByIndex, GetLocalPlayer, gui_SetValue, gui_GetValue, LocalPlayerIndex, c_AllowListener, cb_Register, g_tickcount, g_realtime, g_curtime, g_absoluteframetime, math_floor, math_sqrt, GetPlayerResources, entities_FindByClass, IsButtonPressed, client_ChatSay, table_insert, table_remove, vector_Distance = draw.Line, draw.TextShadow, draw.Color, draw.Text, globals.TickInterval, string.format, http.Get, string.gsub, file.Open, math.exp, math.rad, math.max, math.abs, math.tan, math.sin, math.cos, math.fmod, draw.GetTextSize, draw.FilledRect, draw.RoundedRect, draw.RoundedRectFill, draw.CreateFont, draw.SetFont, client.WorldToScreen, draw.GetScreenSize, client.GetConVar, client.SetConVar, client.Command, client.GetPlayerNameByUserID, client.GetPlayerIndexByUserID, entities.GetByIndex, entities.GetLocalPlayer, gui.SetValue, gui.GetValue, client.GetLocalPlayerIndex, client.AllowListener, callbacks.Register, globals.TickCount, globals.RealTime, globals.CurTime, globals.AbsoluteFrameTime, math.floor, math.sqrt, entities.GetPlayerResources, entities.FindByClass, input.IsButtonPressed, client.ChatSay, table.insert, table.remove, vector.Distance
@@ -363,19 +362,15 @@ callbacks.Register("Draw", "SkyBox", SkyBox)
 local vis_main = gui.Reference('SETTINGS', "Miscellaneous")
 local box = gui.Groupbox( vis_main, "Extra Stuff", 0, 380, 213, 170 );
 local FullbrightCheckbox = gui.Checkbox(box, "lua_fullbright", "Full Brightness", 0 );
+local ERadar = gui.Checkbox(box, "esp_engine_radar", "Engine Radar", 0)
 local RainbowMenu = gui.Checkbox(box, "lua_rainbowmenu", "Rainbow Menu", 0 );
 local AWMetallicHitsound = gui.Checkbox(box, "lua_metallichitsound", "Metallic Hitsound", 0 );
 local DamageSay = gui.Checkbox(box, "lua_damagesay", "Damage Log", 0 );
 local K_O_L_H = gui.Checkbox(box, "lua_knifelefthand", "Knife On Left Hand", 0)
 
+-- Engine Radar
 
-local function drawing_callback()       
-		 for index, Player in pairs(entities.FindByClass("CCSPlayer")) do
-		Player:SetProp( "m_bSpotted", 1, true )
-  end
-end
-
-callbacks.Register("Draw", "engine_radar_draw", drawing_callback);
+function engineradar() if ERadar:GetValue() then ERval = 1 else ERval = 0 end for a, b in pairs(entities_FindByClass("CCSPlayer")) do b:SetProp("m_bSpotted", ERval) end end cb_Register("Draw", engineradar)
 
 -- Fullbright
 
