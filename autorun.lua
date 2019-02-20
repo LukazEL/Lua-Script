@@ -369,7 +369,7 @@ local RainbowMenu = gui.Checkbox(box, "lua_rainbowmenu", "Rainbow Menu", 0 );
 local AWMetallicHitsound = gui.Checkbox(box, "lua_metallichitsound", "Metallic Hitsound", 0 );
 local DamageSay = gui.Checkbox(box, "lua_damagesay", "Damage Log", 0 );
 local K_O_L_H = gui.Checkbox(box, "lua_knifelefthand", "Knife On Left Hand", 0)
-local s_fovfix = gui.Checkbox(G_VM, "lua_fixfov", "Fix Scoped FOV", 0)
+local s_fovfix = gui.Checkbox(box, "lua_fixfov", "Fix Scoped FOV", 0)
 
 -- Engine Radar
 
