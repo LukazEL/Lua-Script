@@ -369,15 +369,10 @@ local RainbowMenu = gui.Checkbox(box, "lua_rainbowmenu", "Rainbow Menu", 0 );
 local AWMetallicHitsound = gui.Checkbox(box, "lua_metallichitsound", "Metallic Hitsound", 0 );
 local DamageSay = gui.Checkbox(box, "lua_damagesay", "Damage Log", 0 );
 local K_O_L_H = gui.Checkbox(box, "lua_knifelefthand", "Knife On Left Hand", 0)
-local s_fovfix = gui.Checkbox(box, "lua_fixfov", "Fix Scoped FOV", 0)
 
 -- Engine Radar
 
 function engineradar() if ERadar:GetValue() then ERval = 1 else ERval = 0 end for a, b in pairs(entities_FindByClass("CCSPlayer")) do b:SetProp("m_bSpotted", ERval) end end cb_Register("Draw", engineradar)
-
--- fix fov
-
-local fov_value, vm_fov_value = gui_GetValue("vis_view_fov"), gui_GetValue("vis_view_model_fov")
 
 -- Fullbright
 
