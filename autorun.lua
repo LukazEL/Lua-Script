@@ -364,15 +364,20 @@ callbacks.Register("Draw", "SkyBox", SkyBox)
 local vis_main = gui.Reference('SETTINGS', "Miscellaneous")
 local box = gui.Groupbox( vis_main, "Extra Stuff", 0, 380, 213, 170 );
 local FullbrightCheckbox = gui.Checkbox(box, "lua_fullbright", "Full Brightness", 0 );
-local ERadar = gui.Checkbox(box, "esp_engine_radar", "Engine Radar", 0)
+local ERadar = gui.Checkbox(box, "lua_engine_radar", "Engine Radar", 0)
 local RainbowMenu = gui.Checkbox(box, "lua_rainbowmenu", "Rainbow Menu", 0 );
 local AWMetallicHitsound = gui.Checkbox(box, "lua_metallichitsound", "Metallic Hitsound", 0 );
 local DamageSay = gui.Checkbox(box, "lua_damagesay", "Damage Log", 0 );
 local K_O_L_H = gui.Checkbox(box, "lua_knifelefthand", "Knife On Left Hand", 0)
+local s_fovfix = gui.Checkbox(G_VM, "lua_fixfov", "Fix Scoped FOV", 0)
 
 -- Engine Radar
 
 function engineradar() if ERadar:GetValue() then ERval = 1 else ERval = 0 end for a, b in pairs(entities_FindByClass("CCSPlayer")) do b:SetProp("m_bSpotted", ERval) end end cb_Register("Draw", engineradar)
+
+-- fix fov
+
+local fov_value, vm_fov_value = gui_GetValue("vis_view_fov"), gui_GetValue("vis_view_model_fov")
 
 -- Fullbright
 
