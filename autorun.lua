@@ -1132,4 +1132,32 @@ end
 
 callbacks.Register( "Draw", "on_paint", on_paint);
 
+-- Fixed R8 [FAKEDUCK]
+
+local cb = gui.Checkbox(gui.Reference("RAGE", "WEAPON", "REVOLVER", "Accuracy"), "rbot_revolver_autocock_ex", "Fixed Auto-Revolver", false)
+
+local cnt = 0
+local function on_create_move(cmd)
+    local me = entities.GetLocalPlayer()
+    if cb:GetValue() and me ~= nil then
+        local wep = me:GetPropEntity("m_hActiveWeapon")
+
+        if wep ~= nil and wep:GetWeaponID() == 64 then
+            cnt = cnt + 1
+            if cnt <= 15 then
+                cmd:SetButtons(cmd:GetButtons() | (1 << 0))
+            else
+                cnt = 0
+                
+                local m_flPostponeFireReadyTime = wep:GetPropFloat("m_flPostponeFireReadyTime")
+                if m_flPostponeFireReadyTime > 0 and m_flPostponeFireReadyTime < globals.CurTime() then
+                    cmd:SetButtons(cmd:GetButtons() & ~(1 << 0))
+                end
+            end
+        end
+    end
+end
+
+callbacks.Register("CreateMove", on_create_move)
+
 -- By LukazEL#5695
